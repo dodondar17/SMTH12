@@ -1,0 +1,13 @@
+knitr::opts_knit$set(root.dir = 'C:/Users/pesvb/OneDrive/rstudio/Rrnaseq')
+setwd("C:/Users/pesvb/OneDrive/rstudio/Rrnaseq")
+
+targets <- read.delim("C:/Users/pesvb/OneDrive/rstudio/Rrnaseq/data/targets.txt", comment.char = "#")
+targets
+dir.create("results") # create a results directory
+results1 <- "./results"# defines location where to write results
+args <- systemArgs(sysma="C:/Users/pesvb/OneDrive/rstudio/Rrnaseq/param/hisat2.param", mytargets="C:/Users/pesvb/OneDrive/rstudio/Rrnaseq/data/targets.txt")
+sysargs(args)[1]
+
+runCommandline(args, make_bam=TRUE) #problem
+read_statsDF <- alignStats(args) #generate alignment statistics
+read_statsDF # display alignment statistics
